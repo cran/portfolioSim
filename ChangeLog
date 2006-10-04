@@ -1,0 +1,2 @@
+Version: 0.1-1 (2006-10-04, released)
+        * Fixed test breaking due to locale issues.
