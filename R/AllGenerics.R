@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: AllGenerics.R 373 2006-10-04 13:32:26Z enos $
+## $Id: AllGenerics.R 367 2006-10-03 15:13:39Z enos $
 ##
 ## Generics for the portfolioSim package.
 ##

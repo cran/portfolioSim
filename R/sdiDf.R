@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: sdiDf.R 373 2006-10-04 13:32:26Z enos $
+## $Id: sdiDf.R 367 2006-10-03 15:13:39Z enos $
 ##
 ## Market data interface implementation that returns market data
 ## input objects from subsets of a larger data frame.

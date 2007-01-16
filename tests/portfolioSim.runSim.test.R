@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: portfolioSim.runSim.test.R 373 2006-10-04 13:32:26Z enos $
+## $Id: portfolioSim.runSim.test.R 367 2006-10-03 15:13:39Z enos $
 ##
 ## Tests the runSim method of the portfolioSim class
 ##

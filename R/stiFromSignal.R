@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: stiFromSignal.R 373 2006-10-04 13:32:26Z enos $
+## $Id: stiFromSignal.R 367 2006-10-03 15:13:39Z enos $
 ##
 ## Generate trades based on signal data stored in a data frame.  The
 ## way we do this is by determining a notion of target portfolio each

@@ -12,12 +12,11 @@ portfolio simulations.
 \details{
 \tabular{ll}{
 Package: \tab portfolioSim\cr
-Version: \tab 0.1-1\cr
-Date: \tab 2006-10-04\cr
-Depends: \tab R (>= 2.4.0), methods, lattice, portfolio\cr
+Version: \tab 0.1-2\cr
+Date: \tab 2007-01-16\cr
+Depends: \tab R (>= 2.4.0), methods, lattice, portfolio (>= 0.3-3)\cr
 License: \tab GPL version 2 or later.\cr
-Packaged: \tab Wed Oct 4 13:35:03 2006; enos\cr
-Built: \tab R 2.4.0; ; 2006-10-04 14:00:22; unix\cr
+Built: \tab R 2.4.1; ; 2007-01-16 13:36:45; unix\cr
 }
 
 Index:
