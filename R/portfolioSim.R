@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: portfolioSim.R 367 2006-10-03 15:13:39Z enos $
+## $Id: portfolioSim.R 399 2007-04-19 16:14:41Z enos $
 ##
 ## Methods for the main simulation object.
 ##
@@ -105,8 +105,6 @@ setMethod("runSim",
                 period <- periods$period[i]
                 if(verbose) cat("Processing period:", format(period), "\n")
 
-                if(format(period) == "1994-06-09"){ browser() }
-
                 ## There are two interfaces from which we gather data.
                 ## This first interface supplies us with all of the
                 ## data we need for the period.  Note that the result
@@ -125,7 +123,7 @@ setMethod("runSim",
                 curr.holdings@price.var <- "start.price"
 
                 ## At the current level of implementation it's
-                ## preferable use average price for turover
+                ## preferable use average price for turnover
                 ## calculations.
 
                 data$average.price <- (data$start.price + data$end.price) / 2
@@ -194,17 +192,23 @@ setMethod("runSim",
                 ## day's volume.
 
                 pct <- object@fill.volume.pct
-                
-                trades$volume <- data$volume[match(trades$id, data$id)]
-                trades <- trades[!is.na(trades$volume),]
-                
-                trades$shares <- ifelse(trades$shares > trades$volume * (pct / 100),
-                                        trades$volume * (pct / 100),
-                                        trades$shares)
 
-                trades <- trades[!is.na(trades$shares) & trades$shares > 0,]
+                if(nrow(trades) > 0 && !pct %in% Inf){
+
+                  trades$volume <- data$volume[match(trades$id, data$id)]
+                  trades <- trades[!is.na(trades$volume),]
+                  
+                  trades$shares <- ifelse(trades$shares > trades$volume * (pct / 100),
+                                          trades$volume * (pct / 100),
+                                          trades$shares)
+
+                  trades <- trades[!is.na(trades$shares) & trades$shares > 0,]
+                }
+
+                ## What should we do about trades without prices?
+                ## Here, they don't make it into the sum.
                 
-                turnover <- sum(abs(trades$price * trades$shares))
+                turnover <- sum(abs(trades$price * trades$shares), na.rm = TRUE)
                 
                 ## Calculate performance.  Before doing so, ensure
                 ## that each stock in the portfolio at least has an
@@ -274,6 +278,11 @@ setMethod("runSim",
                 
                 curr.holdings <-
                   updatePrices(curr.holdings, data$id, data$end.price)
+
+                ## Calculate holdings weights
+
+                curr.holdings <- calcWeights(curr.holdings)
+                
                 
                 sp.result@end.data@instant      <- periods$end[i]
                 sp.result@end.data@equity.long  <-

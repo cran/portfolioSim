@@ -62,7 +62,10 @@
     \item{\code{fill.volume.pct}:}{ Object of class \code{"numeric"}
       describing the maxiumum percentage of the daily
       trading volume of a stock that the simulator is allowed to trade in
-      a single period.  The default is 15. }
+      a single period.  The default is 15. If set to \code{Inf}, all
+      trades produced by the trades interface will be done, regardless
+      of whether some of the associated securities are absent in sim
+      data or have an NA market data for the period. }
     \item{\code{exp.var}:}{ An object of class \code{"character"} listing
        additional variables to be used when analyzing the exposures for
        each period. }

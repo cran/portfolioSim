@@ -36,7 +36,8 @@ actually have achieved over a given period of time.
 
 \section{Introduction}
 
-Note: this document is unfinished and is a work-in-progress.\\
+\emph{Note: this document is unfinished and is a work-in-progress.}
+\\
 
 Whatever investment strategy one uses to manage a portfolio, perhaps
 the most basic and most important question one can ask of it is: ``How
@@ -894,19 +895,25 @@ create the periods data frame.  Looking at the \texttt{date} column,
 we can easily construct a data frame that looks like this:
 
 \begin{Schunk}
+\begin{Sinput}
+> periods <- data.frame(period = sort(starmine.sim$date[!duplicated(starmine.sim$date)]))
+> periods$start <- periods$period
+> periods$end <- c(periods$start[-1], as.Date("1995-12-31"))
+> periods
+\end{Sinput}
 \begin{Soutput}
        period      start        end
-1  1995-03-31 1995-03-31 1995-06-30
-2  1995-06-30 1995-06-30 1995-07-31
-3  1995-07-31 1995-07-31 1995-08-31
-4  1995-08-31 1995-08-31 1995-09-30
-5  1995-09-30 1995-09-30 1995-10-31
-6  1995-10-31 1995-10-31 1995-11-30
-7  1995-11-30 1995-11-30 1995-01-31
-8  1995-01-31 1995-01-31 1995-02-28
-9  1995-02-28 1995-02-28 1995-04-30
-10 1995-04-30 1995-04-30 1995-05-31
-11 1995-05-31 1995-05-31 1995-12-31
+1  1995-01-31 1995-01-31 1995-02-28
+2  1995-02-28 1995-02-28 1995-03-31
+3  1995-03-31 1995-03-31 1995-04-30
+4  1995-04-30 1995-04-30 1995-05-31
+5  1995-05-31 1995-05-31 1995-06-30
+6  1995-06-30 1995-06-30 1995-07-31
+7  1995-07-31 1995-07-31 1995-08-31
+8  1995-08-31 1995-08-31 1995-09-30
+9  1995-09-30 1995-09-30 1995-10-31
+10 1995-10-31 1995-10-31 1995-11-30
+11 1995-11-30 1995-11-30 1995-12-31
 \end{Soutput}
 \end{Schunk}
 
@@ -1108,37 +1115,37 @@ End:     1995-11-30
 
                                     profit   return
 ---------------------------------------------------
-Total:                             218,063     23.2 %  
-Sharpe:                                         3.1
+Total:                             228,313     22.5 %  
+Sharpe:                                         3.3
 ---------------------------------------------------
-Mean return:                                    1.8 %  
-Mean return (ann):                             21.3 %  
-Volatility:                                     2.0 %  
-Volatility (ann):                               6.8 %  
+Mean return:                                    1.9 %  
+Mean return (ann):                             22.5 %  
+Volatility:                                     1.9 %  
+Volatility (ann):                               6.7 %  
 ---------------------------------------------------
-Best period:                        55,760      6.3 %   (1995-10-31)
-Worst period:                       -4,234    -43.8 bps (1995-05-31)
-Worst drawdown:                      9,432     78.7 bps (1995-04-30 to 1995-05-31)
+Best period:                        55,031      6.3 %   (1995-10-31)
+Worst period:                         -259     -5.7 bps (1995-05-31)
+Worst drawdown:                     12,386      1.1 %   (1995-04-30 to 1995-05-31)
 ---------------------------------------------------
-Mean size:                             522
-Mean equity:                       838,058
-Mean gross equity:               1,676,116
+Mean size:                             494
+Mean equity:                       831,496
+Mean gross equity:               1,662,992
 Universe turnover:                       0
-Turnover:                       26,352,842
-Mean turnover:                   2,196,070
-Mean turnover (ann):            26,352,842
+Turnover:                       26,258,923
+Mean turnover:                   2,188,244
+Mean turnover (ann):            26,258,923
 Holding period (mth):                  1.5
 ---------------------------------------------------
-Mean NA weights:                        35
-Mean NA returns:                        32
+Mean NA weights:                        10
+Mean NA returns:                         8
 \end{Soutput}
 \end{Schunk}
 
 This display summarizes the data saved by the simulator when using the
 ``basic'' \texttt{out.type}.  From this summary, we can quickly
 observe that our investment strategy based on the StarMine Indicator
-yielded a profit of \$218,063, or 23.2\% of our original \$1,000,000
-investment.  Across our monthly periods, the mean return was 1.8\%.
+yielded a profit of \$228,313, or 22.5\% of our original \$1,000,000
+investment.  Across our monthly periods, the mean return was 1.9\%.
 The best month for our portfolio was October, while our worst returns
 came in May.  Overall, it seems like our strategy would have worked
 very well during 1995.  While such strong returns are encouraging, we
@@ -1176,15 +1183,15 @@ Top/bottom performers by contribution (%):
 
            id contrib
 799  45031210   -0.60
-357  16961710   -0.49
+357  16961710   -0.50
 284  11157210   -0.40
-1001 52465R10   -0.33
-2056 75886F10   -0.25
+1001 52465R10   -0.34
+2056 75886F10   -0.26
 1338 64108110   -0.25
-317  12738710    0.39
+317  12738710    0.40
 372  17275510    0.40
 68   01877H10    0.43
-1742   680492    0.45
+1742   680492    0.46
 2417 N5424G10    0.46
 2000 72003530    0.53
 \end{Soutput}

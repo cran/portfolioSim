@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: simResult.R 367 2006-10-03 15:13:39Z enos $
+## $Id: simResult.R 401 2007-04-19 16:18:51Z enos $
 ##
 ## Methods defined for class 'simResult'.
 ##
@@ -8,7 +8,7 @@
 
 setMethod("summary",
           signature(object = "simResult"),
-          function(object){
+          function(object, start.period = NULL, end.period = NULL){
             
             cat("\nSimulation summary:\n\n")
             
@@ -17,8 +17,8 @@ setMethod("summary",
             ## for this summary into a data frame.
 
             if("basic" %in% object@type){
-            
-              ret <- perfSummaryDf(object)
+              
+              ret <- perfSummaryDf(object, start.period = start.period, end.period = end.period)
               
               ## Haven't dealt with NA returns yet.
               
@@ -63,7 +63,8 @@ setMethod("summary",
                 
                 ## Summary statistics.
                 
-                total.ret     <- prod(ret$ret + 1) - 1
+                ## total.ret     <- prod(ret$ret + 1) - 1
+                total.ret     <- sum(ret$ret)
                 total.profit  <- sum(ret$profit)
                 
                 mean.ret      <- mean(ret$ret)
@@ -203,7 +204,7 @@ setMethod("summary",
             }
 
             if("detail" %in% object@type){
-              per.sec <- securityPerfSummaryDf(object)
+              per.sec <- securityPerfSummaryDf(object, start.period = start.period, end.period = end.period)
 
               ## First show by profit, then contrib.
 
@@ -222,7 +223,7 @@ setMethod("summary",
             }
 
             if("contributions" %in% object@type){
-              contrib <- contributionSummaryDf(object)
+              contrib <- contributionSummaryDf(object, start.period = start.period, end.period = end.period)
               
               cat("Mean contributions:\n\n")
               print(contrib)
@@ -270,24 +271,30 @@ setMethod("plot",
 
 setMethod("perfSummaryDf",
           signature = signature(object = "simResult"),
-          function(object){
+          function(object, start.period = NULL, end.period = NULL){
             ret <- do.call(rbind,
                            lapply(object@data,
                                   function(x){
-                                    data.frame(period            = x@period.data@period,
-                                               start             = x@start.data@instant,
-                                               end               = x@end.data@instant,
-                                               ret               = x@period.data@performance@ret,
-                                               profit            = x@period.data@performance@profit,
-                                               turnover          = x@period.data@turnover,
-                                               universe.turnover = x@period.data@universe.turnover,
-                                               missing.price     = x@period.data@performance@missing.price,
-                                               missing.return    = x@period.data@performance@missing.return,
-                                               equity.long       = x@start.data@equity.long,
-                                               equity.short      = x@start.data@equity.short,
-                                               size.long         = x@start.data@size.long,
-                                               size.short        = x@start.data@size.short
-                                               )
+                                    if((is.null(start.period) || x@period.data@period > start.period) &
+                                       (is.null(end.period)   || x@period.data@period <= end.period)){
+                                      data.frame(period            = x@period.data@period,
+                                                 start             = x@start.data@instant,
+                                                 end               = x@end.data@instant,
+                                                 ret               = x@period.data@performance@ret,
+                                                 profit            = x@period.data@performance@profit,
+                                                 turnover          = x@period.data@turnover,
+                                                 universe.turnover = x@period.data@universe.turnover,
+                                                 missing.price     = x@period.data@performance@missing.price,
+                                                 missing.return    = x@period.data@performance@missing.return,
+                                                 equity.long       = x@start.data@equity.long,
+                                                 equity.short      = x@start.data@equity.short,
+                                                 size.long         = x@start.data@size.long,
+                                                 size.short        = x@start.data@size.short
+                                                 )
+                                    }
+                                    else{
+                                      NULL
+                                    }
                                   }
                                   )
                            )
@@ -362,7 +369,7 @@ setMethod("perfSummaryDf",
 
 setMethod("securityPerfSummaryDf",
           signature = signature(object = "simResult"),
-          function(object){
+          function(object, start.period = NULL, end.period = NULL){
 
             ## At what point does this become intractable?  I may need
             ## to do some smart bookeeping along the way here...
@@ -370,16 +377,16 @@ setMethod("securityPerfSummaryDf",
             x <- do.call(rbind,
                          lapply(object@data,
                                 function(x){
-                                  if(nrow(x@period.data@performance@ret.detail) > 0){
+                                  if((is.null(start.period) || x@period.data@period > start.period) &
+                                     (is.null(end.period)   || x@period.data@period <= end.period)  &
+                                     nrow(x@period.data@performance@ret.detail) > 0){
                                     x@period.data@performance@ret.detail[c("id","contrib","profit")]
                                   }
                                   else{
-                                    data.frame(id = numeric(0),
-                                               contrib = numeric(0),
-                                               profit = numeric(0))
+                                    NULL
                                   }
                                 }))
-            x.agg <- aggregate(x[c("contrib","profit")], by = list(id = x$id), sum)
+            x.agg <- aggregate(x[c("contrib","profit")], by = list(id = x$id), sum, na.rm = TRUE)
 
             ## Turn contributions into percents
 

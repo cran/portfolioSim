@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: stiPresetTrades.R 367 2006-10-03 15:13:39Z enos $
+## $Id: stiPresetTrades.R 344 2006-10-01 05:06:05Z enos $
 ##
 ## Methods for class stiPresetTrades
 ##

@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: stiFromSignal.getSimTrades.test.R 367 2006-10-03 15:13:39Z enos $
+## $Id: stiFromSignal.getSimTrades.test.R 413 2007-04-22 19:31:03Z enos $
 ##
 ## Tests for the getSimTrades method of class stiFromSignal
 ##
@@ -17,9 +17,9 @@ load("stiFromSignal.getSimTrades.test.RData")
 result.1 <- getSimTrades(stiFS.1, period = 1, holdings = new("portfolio"), sim.data = sd.1, verbose = FALSE)
 
 stopifnot(
-          all.equal(result.1@trades$id, truth.1@trades$id),
-          all.equal(result.1@trades$side, truth.1@trades$side),
-          all.equal(result.1@trades$shares, truth.1@trades$shares),
+          all.equal(result.1@trades@trades$id, truth.1@trades@trades$id),
+          all.equal(result.1@trades@trades$side, truth.1@trades@trades$side),
+          all.equal(result.1@trades@trades$shares, truth.1@trades@trades$shares),
           all.equal(result.1@period, truth.1@period),
           all.equal(get("target", pos = env.1, inherits = FALSE), holdings.1)
           )
@@ -29,9 +29,9 @@ stopifnot(
 result.2 <- getSimTrades(stiFS.1, period = 1, holdings = holdings.2, sim.data = sd.1, verbose = FALSE)
 
 stopifnot(
-          all.equal(result.2@trades$id, truth.2@trades$id),
-          all.equal(result.2@trades$side, truth.2@trades$side),
-          all.equal(result.2@trades$shares, truth.2@trades$shares),
+          all.equal(result.2@trades@trades$id, truth.2@trades@trades$id),
+          all.equal(result.2@trades@trades$side, truth.2@trades@trades$side),
+          all.equal(result.2@trades@trades$shares, truth.2@trades@trades$shares),
           all.equal(result.2@period, truth.2@period),
           all.equal(get("target", pos = env.1, inherits = FALSE), holdings.1)
           )
@@ -41,9 +41,9 @@ stopifnot(
 result.3 <- getSimTrades(stiFS.1, period = 3, holdings = new("portfolio"), sim.data = sd.3, verbose = FALSE)
 
 stopifnot(
-          all.equal(result.3@trades$id, truth.3@trades$id),
-          all.equal(result.3@trades$side, truth.3@trades$side),
-          all.equal(result.3@trades$shares, truth.3@trades$shares),
+          all.equal(result.3@trades@trades$id, truth.3@trades@trades$id),
+          all.equal(result.3@trades@trades$side, truth.3@trades@trades$side),
+          all.equal(result.3@trades@trades$shares, truth.3@trades@trades$shares),
           all.equal(result.3@period, truth.3@period)
           )
 
@@ -52,9 +52,9 @@ stopifnot(
 result.4 <- getSimTrades(stiFS.2, period = 2, holdings = holdings.1, sim.data = sd.2, verbose = FALSE)
 
 stopifnot(
-          all.equal(result.4@trades$id, truth.4@trades$id),
-          all.equal(result.4@trades$side, truth.4@trades$side),
-          all.equal(result.4@trades$shares, truth.4@trades$shares),
+          all.equal(result.4@trades@trades$id, truth.4@trades@trades$id),
+          all.equal(result.4@trades@trades$side, truth.4@trades@trades$side),
+          all.equal(result.4@trades@trades$shares, truth.4@trades@trades$shares),
           all.equal(result.4@period, truth.4@period)
           )
 
@@ -63,9 +63,9 @@ stopifnot(
 result.5 <- getSimTrades(stiFS.3, period = 3, holdings = holdings.2, sim.data = sd.3, verbose = FALSE)
 
 stopifnot(
-          all.equal(result.5@trades$id, truth.5@trades$id),
-          all.equal(result.5@trades$side, truth.5@trades$side),
-          all.equal(result.5@trades$shares, truth.5@trades$shares),
+          all.equal(result.5@trades@trades$id, truth.5@trades@trades$id),
+          all.equal(result.5@trades@trades$side, truth.5@trades@trades$side),
+          all.equal(result.5@trades@trades$shares, truth.5@trades@trades$shares),
           all.equal(result.5@period, truth.5@period)
           )
 

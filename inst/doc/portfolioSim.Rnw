@@ -42,7 +42,8 @@ actually have achieved over a given period of time.
 
 \section{Introduction}
 
-Note: this document is unfinished and is a work-in-progress.\\
+\emph{Note: this document is unfinished and is a work-in-progress.}
+\\
 
 Whatever investment strategy one uses to manage a portfolio, perhaps
 the most basic and most important question one can ask of it is: ``How
@@ -865,9 +866,9 @@ The first step in constructing our \texttt{portfolioSim} object is to
 create the periods data frame.  Looking at the \texttt{date} column,
 we can easily construct a data frame that looks like this:
 
-<<echo=FALSE>>=
-
-periods <- data.frame(period = unique(starmine.sim$date))
+<<echo=TRUE>>=
+periods <- data.frame(period = sort(starmine.sim$date[!duplicated(starmine.sim$date)]))
+## periods <- data.frame(period = unique(starmine.sim$date))
 periods$start <- periods$period
 periods$end <- c(periods$start[-1], as.Date("1995-12-31"))
 
@@ -1050,8 +1051,8 @@ summary(result)
 This display summarizes the data saved by the simulator when using the
 ``basic'' \texttt{out.type}.  From this summary, we can quickly
 observe that our investment strategy based on the StarMine Indicator
-yielded a profit of \$218,063, or 23.2\% of our original \$1,000,000
-investment.  Across our monthly periods, the mean return was 1.8\%.
+yielded a profit of \$228,313, or 22.5\% of our original \$1,000,000
+investment.  Across our monthly periods, the mean return was 1.9\%.
 The best month for our portfolio was October, while our worst returns
 came in May.  Overall, it seems like our strategy would have worked
 very well during 1995.  While such strong returns are encouraging, we
