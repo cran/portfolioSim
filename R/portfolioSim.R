@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: portfolioSim.R 399 2007-04-19 16:14:41Z enos $
+## $Id: portfolioSim.R 1226 2007-10-01 18:29:22Z enos $
 ##
 ## Methods for the main simulation object.
 ##
@@ -8,7 +8,7 @@
 
 setMethod("initialize",
           signature(.Object = "portfolioSim"),
-          function(.Object){
+          function(.Object, ...){
             .Object <- callNextMethod()
 
             types <- .Object@out.type
@@ -61,9 +61,9 @@ setMethod("runSim",
 
             ## Call initialize again to make sure out.type is what we
             ## want it to be.
-            
+
             object <- initialize(object)
-            
+
             ## Our holdings is the portfolio we are anlysing in this
             ## simulation.  Holdings at the start of each period are
             ## the same as holdings at the end of the previous period.

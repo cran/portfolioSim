@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: stiFromSignal.getSimTrades.test.R 413 2007-04-22 19:31:03Z enos $
+## $Id: stiFromSignal.getSimTrades.test.R 1226 2007-10-01 18:29:22Z enos $
 ##
 ## Tests for the getSimTrades method of class stiFromSignal
 ##

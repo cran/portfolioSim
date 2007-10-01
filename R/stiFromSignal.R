@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: stiFromSignal.R 344 2006-10-01 05:06:05Z enos $
+## $Id: stiFromSignal.R 1226 2007-10-01 18:29:22Z enos $
 ##
 ## Generate trades based on signal data stored in a data frame.  The
 ## way we do this is by determining a notion of target portfolio each
@@ -14,7 +14,7 @@
 
 setMethod("initialize",
           signature(.Object = "stiFromSignal"),
-          function(.Object){
+          function(.Object, ...){
             .Object <- callNextMethod()
             
             .Object@target <- new.env()
