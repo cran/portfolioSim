@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: AllClasses.R 1226 2007-10-01 18:29:22Z enos $
+## $Id: AllClasses.R 344 2006-10-01 05:06:05Z enos $
 ##
 ## Class definitions for the portfolioSim package.
 ##

@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: simData.class.test.R 1226 2007-10-01 18:29:22Z enos $
+## $Id: simData.class.test.R 344 2006-10-01 05:06:05Z enos $
 ##
 ## Tests the validity function for the simData class
 ##

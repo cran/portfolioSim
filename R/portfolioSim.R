@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: portfolioSim.R 1226 2007-10-01 18:29:22Z enos $
+## $Id: portfolioSim.R 1229 2007-10-02 14:07:55Z enos $
 ##
 ## Methods for the main simulation object.
 ##

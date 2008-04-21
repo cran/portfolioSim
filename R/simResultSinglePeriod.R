@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: simResultSinglePeriod.R 1226 2007-10-01 18:29:22Z enos $
+## $Id: simResultSinglePeriod.R 344 2006-10-01 05:06:05Z enos $
 ##
 ## Methods for a single period simulation result object.
 ##
