@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: sdiDf.getSimData.test.R 372 2006-10-04 13:30:42Z enos $
+## $Id: sdiDf.getSimData.test.R 1318 2009-01-13 16:39:09Z enos $
 ##
 ## Tests for the getSimData method of class sdiDf
 ##

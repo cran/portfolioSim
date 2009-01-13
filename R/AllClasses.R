@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: AllClasses.R 344 2006-10-01 05:06:05Z enos $
+## $Id: AllClasses.R 1318 2009-01-13 16:39:09Z enos $
 ##
 ## Class definitions for the portfolioSim package.
 ##
@@ -9,8 +9,6 @@
 ## Load hook for methods
 
 .onLoad <- function(lib, pkg) require(methods)
-
-setClassUnion("characterOrNumeric", c("character","numeric"))
 
 ## I want the below class to represent atomic values that might have
 ## attributes (like POSIXt, Date).  I _don't_ want things like lists

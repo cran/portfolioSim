@@ -1,3 +1,8 @@
+Version: 0.2-4 (2009-01-13, released)
+
+	* Fixed bug breaking R CMD check.  No longer redefine the 
+	"characterOrNull" class union in this package.
+
 Version: 0.2-0 (2007-04-22, released)
 
 	* Require portfolio_0.4-0.

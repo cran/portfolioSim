@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: simTrades.class.test.R 344 2006-10-01 05:06:05Z enos $
+## $Id: simTrades.class.test.R 1318 2009-01-13 16:39:09Z enos $
 ##
 ## Tests the validity function for the simTrades class
 ##
