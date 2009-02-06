@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: portfolioSim.class.test.R 1318 2009-01-13 16:39:09Z enos $
+## $Id: portfolioSim.class.test.R 1320 2009-02-06 19:02:03Z enos $
 ##
 ## Tests the validity function for the portfolioSim class
 ##
@@ -44,7 +44,7 @@ stopifnot(
           )
 
 test.periods.1 <- test.periods
-test.periods.1$period <- as.factor(test.periods.1$period)
+test.periods.1$period <- as.complex(test.periods.1$period)
 
 trial.1 <- try(
                new("portfolioSim",
@@ -53,10 +53,8 @@ trial.1 <- try(
                silent = TRUE
                )
 
-stopifnot(
-          all.equal(class(trial.1), "try-error"),
-          as.logical(grep("column.*periods slot.*not orderable", trial.1[1]))
-          )
+stopifnot(all.equal(class(trial.1), "try-error"))
+stopifnot(as.logical(grep("column.*periods slot.*not orderable", trial.1[1])))
 
 trial.2 <- try(
                new("portfolioSim",

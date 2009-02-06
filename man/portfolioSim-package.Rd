@@ -12,8 +12,8 @@ portfolio simulations.
 \details{
 \tabular{ll}{
 Package: \tab portfolioSim\cr
-Version: \tab 0.2-4\cr
-Date: \tab 2009-01-13\cr
+Version: \tab 0.2-5\cr
+Date: \tab 2009-02-06\cr
 Depends: \tab R (>= 2.4.0), methods, lattice, portfolio (>= 0.4-0)\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
