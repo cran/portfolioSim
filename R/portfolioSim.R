@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## $Id: portfolioSim.R 1229 2007-10-02 14:07:55Z enos $
+## $Id: portfolioSim.R 1322 2009-05-04 13:02:19Z enos $
 ##
 ## Methods for the main simulation object.
 ##
@@ -245,9 +245,10 @@ setMethod("runSim",
                 sp.result@start.data@size.short <-
                   portfolio:::sizeShort(curr.holdings)
 
-                if(length(object@exp.var) > 0){
-                  sp.result@start.data@exposure <-
-                    exposure(curr.holdings, exp.var = object@exp.var)
+                start.exposure <- exposure(curr.holdings, exp.var = object@exp.var)
+                
+                if(length(object@exp.var) > 0 && !is.null(start.exposure)){
+                  sp.result@start.data@exposure <- start.exposure
                 }
                 if(length(object@contrib.var) > 0){
                   sp.result@period.data@contribution <-

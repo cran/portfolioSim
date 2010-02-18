@@ -39,7 +39,15 @@
     \item{\code{trading.style}:}{Object of class \code{"character"}
       representing the trading style to use during the simulation.
       Defaults to "immediate".}
-  }
+    \item{\code{chunk.usd}:}{Object of class \code{"numeric"}
+      specifying the size of chunk to use in the interface's tradelist
+      generation algorithm.  May be ignored depending on which
+      \code{trading.style} is used.  Defaults to 50000.}
+    \item{\code{turnover}:}{Object of class \code{"numeric"}
+      specifying the turnover limit to use in the interface's tradelist
+      generation algorithm.  May be ignored depending on which
+      \code{trading.style} is used.  Defaults to \code{Inf} (no limit).}
+    }
 }
 \section{Extends}{
   Class \code{"simTradesInterface"}, directly.

@@ -18,9 +18,6 @@
   \describe{
     \item{\code{data}:}{Object of class \code{"data.frame"} storing the
       data to be used in the simulation. }
-    \item{\code{period.var}:}{Object of class \code{"character"}
-      representing the column in \code{data} containing some object of
-      class \code{"orderable"} to be used as periods in the simulation.}
   }
 }
 \section{Extends}{
