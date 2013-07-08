@@ -94,7 +94,7 @@ setMethod("runSim",
 
             sim.summary <- object@summary.interface
             
-            for(i in 1:dim(periods)[1]){
+            for(i in seq_len(dim(periods)[1])){
 
               prev.holdings <- curr.holdings
               
